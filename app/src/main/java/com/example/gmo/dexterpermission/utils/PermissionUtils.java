@@ -3,7 +3,6 @@ package com.example.gmo.dexterpermission.utils;
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Build.VERSION;
 import android.support.v4.app.ActivityCompat;
 
@@ -17,19 +16,19 @@ public class PermissionUtils {
     public static boolean checkPermissionCamera(Context context) {
         if (VERSION.SDK_INT >= 23 &&
                 ActivityCompat.checkSelfPermission(context, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
-            /*Nếu đã cấp quyền camera*/
-            return true;
+            /*Nếu chưa cấp quyền camera*/
+            return false;
         }
-        return false;
+        return true;
     }
 
     /*Check quyền gọi*/
     public static boolean checkPermissionCall(Context context){
         if (VERSION.SDK_INT >= 23 &&
                 ActivityCompat.checkSelfPermission(context,Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED){
-            return true;
+            return false;
         }
-        return false;
+        return true;
     }
 
     /*Check location*/
@@ -37,9 +36,9 @@ public class PermissionUtils {
         if (VERSION.SDK_INT >= 23 &&
                 ActivityCompat.checkSelfPermission(context,Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
                 && ActivityCompat.checkSelfPermission(context,Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED){
-            return true;
+            return false;
         }
-        return false;
+        return true;
     }
 
 }
