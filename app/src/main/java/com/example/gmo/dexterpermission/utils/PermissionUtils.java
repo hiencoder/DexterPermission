@@ -15,7 +15,8 @@ public class PermissionUtils {
     *Check quyền camera*/
     public static boolean checkPermissionCamera(Context context) {
         if (VERSION.SDK_INT >= 23 &&
-                ActivityCompat.checkSelfPermission(context, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
+                ActivityCompat.checkSelfPermission(context,
+                        Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
             /*Nếu chưa cấp quyền camera*/
             return false;
         }
@@ -41,4 +42,15 @@ public class PermissionUtils {
         return true;
     }
 
+    /*Check WRITE external storage và read external storage*/
+    public static boolean checkPermissionStorage(Context context){
+        if (VERSION.SDK_INT >= 23 &&
+                ActivityCompat.checkSelfPermission(context,
+                        Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(context,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
+            return false;
+        }
+        return true;
+    }
 }
